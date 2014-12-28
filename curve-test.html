@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+function init(){
+		var ctx = canvas.getContext("2d");
+
+		function drawShape(x, y, lineWidth){
+			// control point offsets
+			var cps = [0, 50, 200, 50, 200, 0]
+			ctx.lineWidth = lineWidth;
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.bezierCurveTo(x+cps[0], y-cps[1], x+cps[2], y-cps[3], x+cps[4], y+cps[5]);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(x,y);
+			ctx.bezierCurveTo(x+cps[0], y+cps[1], x+cps[2], y+cps[3], x+cps[4], y+cps[5]);
+			ctx.stroke();
+		}
+		
+
+		drawShape(100, 100, 1);
+		drawShape(100, 300, 2);
+}
+</script>
+</head>
+
+<body onload="init()">
+<div><canvas id="canvas" width="960" height="400"></canvas></div>
+</body>
+</html>
